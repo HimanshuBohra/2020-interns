@@ -22,9 +22,9 @@ jan_dates.sort()
 INR_EUR_exchange = []
 for i in jan_dates:
    INR_EUR_exchange.append(data['rates'][i]['INR'])
-plt.plot(jan_dates,INR_EUR_exchange)
+plt.plot(jan_dates,INR_EUR_exchange,marker='o')
 plt.xticks(rotation=90)
-plt.ylim(min(INR_EUR_exchange)-0.5,max(INR_EUR_exchange))
+plt.ylim(min(INR_EUR_exchange)-0.5,max(INR_EUR_exchange)+0.5)
 
 plt.xlabel('January Dates')
 plt.ylabel('INR-EUR Exchange Rates')
