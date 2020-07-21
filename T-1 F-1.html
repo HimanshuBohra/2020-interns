@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function() {
+    var dates = []
+	for (var i = 0; i < data.length; i++){
+		dates.push(data['rates'][i]);
+	}
+	var specified_date = [];
+	for (var i = 0; i < dates.length; i++){
+		var arr = d.split("-");
+		var month_index =  parseInt(arr[1],10) - 1;
+		if(month_index == 1){
+			specified_date.push(i);
+		}
+	}
+	specified_date.sort();
+	eur_exchange = []
+	for (var i = 0; i < specified_date.length; i++){
+		eur_exchange.push(data['rates'][i]['INR']);
+	}
+	for (var i = 0; i < specified_date.length; i++) {
+		dataPoints.push({
+			x: specified_date,
+			y: eur_exchange
+		});
+    }
+}
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: specified_date,
+            datasets: [{
+                label: '# of Votes',
+                data: eur_exchange,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+    <canvas id="myChart" width="400" height="400"></canvas>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+</body>
+</html>
